@@ -1,5 +1,6 @@
 package ca.xef5000.mobrushcore.api.dto;
 
+import javax.annotation.Nullable;
 import java.util.UUID;
 
 /**
@@ -12,6 +13,7 @@ public class PlacedMob {
     private final UUID playerUUID;
     private final String plotName;
     private final String mobId;
+    private final String mutationId;
     private final String world;
     private final double x;
     private final double y;
@@ -23,18 +25,19 @@ public class PlacedMob {
     /**
      * Create a new PlacedMob (not yet saved to database).
      */
-    public PlacedMob(UUID playerUUID, String plotName, String mobId, String world, double x, double y, double z, float yaw, float pitch) {
-        this(-1, playerUUID, plotName, mobId, world, x, y, z, yaw, pitch, System.currentTimeMillis());
+    public PlacedMob(UUID playerUUID, String plotName, String mobId, @Nullable String mutationId, String world, double x, double y, double z, float yaw, float pitch) {
+        this(-1, playerUUID, plotName, mobId, mutationId, world, x, y, z, yaw, pitch, System.currentTimeMillis());
     }
 
     /**
      * Create a PlacedMob from database data.
      */
-    public PlacedMob(int id, UUID playerUUID, String plotName, String mobId, String world, double x, double y, double z, float yaw, float pitch, long placedAt) {
+    public PlacedMob(int id, UUID playerUUID, String plotName, String mobId, String mutationId, String world, double x, double y, double z, float yaw, float pitch, long placedAt) {
         this.id = id;
         this.playerUUID = playerUUID;
         this.plotName = plotName;
         this.mobId = mobId;
+        this.mutationId = mutationId;
         this.world = world;
         this.x = x;
         this.y = y;
@@ -62,6 +65,11 @@ public class PlacedMob {
 
     public String getMobId() {
         return mobId;
+    }
+
+    @Nullable
+    public String getMutationId() {
+        return mutationId;
     }
 
     public String getWorld() {

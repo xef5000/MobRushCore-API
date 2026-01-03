@@ -5,6 +5,7 @@ import ca.xef5000.mobrushcore.api.dto.PlacedMob;
 import net.citizensnpcs.api.npc.NPC;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
 import java.util.List;
@@ -16,10 +17,11 @@ public interface PlacedMobManagerAPI {
      * @param player The player placing the mob
      * @param plotName The plot name
      * @param mobId The mob definition ID
+     * @param mutationId The mutation definition ID (nullable)
      * @param location The location to place at
      * @return The created PlacedMob, or null if failed (e.g., no slots available)
      */
-    PlacedMob placeMob(Player player, String plotName, String mobId, Location location);
+    PlacedMob placeMob(Player player, String plotName, String mobId, @Nullable String mutationId, Location location);
 
     /**
      * Count how many mobs a player has placed in a specific plot.

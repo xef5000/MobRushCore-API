@@ -13,4 +13,6 @@ public interface MobRushCoreAPI {
     MobManagerAPI getMobManager();
 
     StatsManagerAPI getStatsManager();
+
+    MutationManagerAPI getMutationManager();
 }

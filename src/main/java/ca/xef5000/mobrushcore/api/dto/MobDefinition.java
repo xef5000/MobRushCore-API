@@ -1,6 +1,11 @@
 package ca.xef5000.mobrushcore.api.dto;
 
+import org.bukkit.ChatColor;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.Objects;
 
 public class MobDefinition {
 
@@ -60,8 +65,19 @@ public class MobDefinition {
         return height;
     }
 
-    public ItemStack getItemStack() {
-        return itemStack;
+    public ItemStack getItemStack(@Nullable MutationDefinition mutationDef) {
+        if (mutationDef == null) {
+            return itemStack;
+        }
+        ItemStack item = itemStack.clone();
+        if (!item.hasItemMeta()) {
+            return item;
+        }
+        ItemMeta meta = item.getItemMeta();
+        if (meta.displayName() != null) meta.displayName(Objects.requireNonNull(meta.displayName()).replaceText(builder -> builder.matchLiteral("{mutation}").replacement(ChatColor.translateAlternateColorCodes('&', mutationDef.getDisplayName()))));
+        if (meta.lore() != null) meta.lore(Objects.requireNonNull(meta.lore()).stream().map(lore -> lore.replaceText(builder -> builder.matchLiteral("{mutation}").replacement(ChatColor.translateAlternateColorCodes('&', mutationDef.getDisplayName())))).toList());
+        item.setItemMeta(meta);
+        return item;
     }
 
     public Generation getGeneration() {
