@@ -8,6 +8,10 @@ The API is available via JitPack:
 
 Add the repository to your `build.gradle`:
 
+- Replace `VERSION` with the Jitpack version
+
+     [![](https://jitpack.io/v/xef5000/MobRushCore-API.svg)](https://jitpack.io/#xef5000/MobRushCore-API)
+
 ```groovy
 repositories {
     maven { url 'https://jitpack.io' }
