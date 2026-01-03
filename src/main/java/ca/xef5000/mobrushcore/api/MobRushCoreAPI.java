@@ -1,9 +1,6 @@
 package ca.xef5000.mobrushcore.api;
 
-import ca.xef5000.mobrushcore.api.managers.ArenaManagerAPI;
-import ca.xef5000.mobrushcore.api.managers.MobManagerAPI;
-import ca.xef5000.mobrushcore.api.managers.PlacedMobManagerAPI;
-import ca.xef5000.mobrushcore.api.managers.PlotManagerAPI;
+import ca.xef5000.mobrushcore.api.managers.*;
 
 public interface MobRushCoreAPI {
 
@@ -14,4 +11,6 @@ public interface MobRushCoreAPI {
     PlotManagerAPI getPlotManager();
 
     MobManagerAPI getMobManager();
+
+    StatsManagerAPI getStatsManager();
 }
