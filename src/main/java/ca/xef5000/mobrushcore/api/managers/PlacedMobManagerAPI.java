@@ -34,6 +34,13 @@ public interface PlacedMobManagerAPI {
     boolean hasAvailableSlots(UUID playerUUID, String plotName);
 
     /**
+     * Check if there's already a mob placed at the given location (same block).
+     * @param location The location to check
+     * @return true if a mob is already at this block position
+     */
+    boolean isMobAtLocation(Location location);
+
+    /**
      * Remove a placed mob by its database ID.
      * @param id The database ID
      */
