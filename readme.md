@@ -18,6 +18,11 @@ dependencies {
 }
 ```
 
+Add to plugin.yml:
+```yaml
+depend: [MobRushCore]
+```
+
 ## Usage
 
 To interact with MobRushCore, use the `MobRushCoreProvider` to get an instance of the API:
