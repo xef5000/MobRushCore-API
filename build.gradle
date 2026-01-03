@@ -1,5 +1,6 @@
 plugins {
     id "java-library"
+    id "maven-publish"
 }
 
 group = "com.github.xef5000"
@@ -9,9 +10,29 @@ java {
     toolchain.languageVersion = JavaLanguageVersion.of(21)
 }
 
+repositories {
+    mavenCentral()
+    maven {
+        name = "papermc-repo"
+        url = "https://repo.papermc.io/repository/maven-public/"
+    }
+    maven {
+        name = 'citizens-repo'
+        url = 'https://maven.citizensnpcs.co/repo'
+    }
+}
+
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.21-R0.1-SNAPSHOT")
     compileOnly("net.citizensnpcs:citizens-main:2.0.41-SNAPSHOT") {
         exclude group: "*", module: "*"
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
     }
 }
